@@ -116,13 +116,13 @@ class Rectangle:
         self.canvas.draw_line(x4, y4, self.x1, self.y1)
 
 
-width = int(input("Введите ширину экрана: "))
-height = int(input("Введите высоту экрана: "))
+width = int(input("Enter screen width: "))
+height = int(input("Enter screen height: "))
 
 my_canvas = Engine2D(width, height)
 
 while True:
-    colour = input("Хотите выбрать цвет? Если да, напишите его название. Доступные цвета: Red, Blue, Green. Если не хотите выбирать цвет, нажмите Enter: ")
+    colour = input("Want to choose a color? If yes, write its name. Available colors: Red, Blue, Green. If you don't want to select a color, press Enter: ")
     colour = colour.lower()
 
     if colour == "":
@@ -130,42 +130,41 @@ while True:
 
     if colour == "red":
         my_canvas.set_color(Fore.RED)
-        print("Выбран цвет:", colour)
+        print("Selected color:", colour)
         break
 
     elif colour == "blue":
         my_canvas.set_color(Fore.BLUE)
-        print("Выбран цвет:", colour)
+        print("Selected color:", colour)
         break
 
     elif colour == "green":
         my_canvas.set_color(Fore.GREEN)
-        print("Выбран цвет:", colour)
+        print("Selected color:", colour)
         break
 
     else:
-        print("Недопустимый цвет! Пожалуйста, выберите из доступных цветов.")
+        print("Invalid color! Please choose from available colors.")
 
-x_point = int(input("Введите x координату точки: "))
-y_point = int(input("Введите y координату точки: "))
+x_point = int(input("Enter the x coordinate of the point: "))
+y_point = int(input("Enter the y coordinate of the point: "))
 
 my_canvas.draw_point(x_point, y_point)
 
 my_canvas.render()
 
-
-x1_line = int(input("Введите x начальной координаты линии: "))
-y1_line = int(input("Введите y начальной координаты линии: "))
-x2_line = int(input("Введите x конечной координаты линии: "))
-y2_line = int(input("Введите y конечной координаты линии: "))
+x1_line = int(input("Enter the x coordinate of the starting line: "))
+y1_line = int(input("Enter the y starting coordinate of the line: "))
+x2_line = int(input("Enter the x coordinate of the line's end coordinate: "))
+y2_line = int(input("Enter the end y coordinate of the line: "))
 
 my_canvas.draw_line(x1_line, y1_line, x2_line, y2_line)
 
 my_canvas.render()
 
-x_circle = int(input("Введите x координату центра круга: "))
-y_circle = int(input("Введите y координату центра круга: "))
-radius_circle = int(input("Введите радиус круга: "))
+x_circle = int(input("Enter the x coordinate of the circle's center: "))
+y_circle = int(input("Enter the y coordinate of the circle's center: "))
+radius_circle = int(input("Enter the radius of the circle: "))
 print("Drawing a {} circle at ({}, {}) with radius {}".format(colour, x_circle, y_circle, radius_circle))
 
 my_circle = Circle(my_canvas, x_circle, y_circle, radius_circle)
@@ -180,9 +179,7 @@ x2_triangle = int(input("Введите x координату второй то
 y2_triangle = int(input("Введите y координату второй точки треугольника: "))
 x3_triangle = int(input("Введите x координату третьей точки треугольника: "))
 y3_triangle = int(input("Введите y координату третьей точки треугольника: "))
-print("Drawing a {} triangle with vertices ({}, {}), ({}, {}), ({}, {})".format(colour, x1_triangle, y1_triangle, x2_triangle, y2_triangle,
-                                                                                     x3_triangle, y3_triangle))
-
+print("Drawing a {} triangle with vertices ({}, {}), ({}, {}), ({}, {})".format(colour, x1_triangle, y1_triangle, x2_triangle, y2_triangle, x3_triangle, y3_triangle))
 my_triangle = Triangle(my_canvas, x1_triangle, y1_triangle, x2_triangle, y2_triangle, x3_triangle, y3_triangle)
 
 my_triangle.draw()
