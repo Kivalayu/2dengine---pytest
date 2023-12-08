@@ -1,7 +1,7 @@
 from colorama import init, Fore
-
+# команда для работы библиотеки colorama
 init()
-
+# создание движка
 class Engine2D:
     def __init__(self, width, height):
         self.width = width
@@ -9,12 +9,12 @@ class Engine2D:
         self.screen = [[' ' for _ in range(width)] for _ in range(height)]
         self.color = Fore.LIGHTWHITE_EX
 
-
+    # функция для создания точки
     def draw_point(self, x, y, char='+'):
         if 0 <= x < self.width and 0 <= y < self.height:
             self.screen[y][x] = self.color + char
 
-
+    # функция для создания линии
     def draw_line(self, x1, y1, x2, y2, char='+'):
         dx = abs(x2 - x1)
         dy = abs(y2 - y1)
@@ -33,19 +33,21 @@ class Engine2D:
             if e2 < dx:
                 err += dx
                 y1 += sy
-
+                
+    # функция установки цвета
     def set_color(self, color):
         self.color = color
 
+    # функция для установки размеров холста
     def get_canvas_size(self):
         return self.width, self.height
-
+    # отображение рисунка на холсте
     def render(self):
         for row in self.screen:
             print(''.join(row))
 
 
-
+# отрисовка круга
 class Circle:
     def __init__(self, canvas, x, y, radius):
         self.canvas = canvas
@@ -53,7 +55,7 @@ class Circle:
         self.y = y
         self.radius = radius
 
-
+    # функция отрисовки круга
     def draw(self):
         x = 0
         y = self.radius
@@ -78,7 +80,7 @@ class Circle:
             delta += 2 * (x - y)
             y -= 1
 
-
+# отрисовка треугольника
 class Triangle:
     def __init__(self, canvas, x1, y1, x2, y2, x3, y3):
         self.canvas = canvas
@@ -88,13 +90,13 @@ class Triangle:
         self.y2 = y2
         self.x3 = x3
         self.y3 = y3
-
+    # функция отрисовки треугольника
     def draw(self):
         self.canvas.draw_line(self.x1, self.y1, self.x2, self.y2)
         self.canvas.draw_line(self.x2, self.y2, self.x3, self.y3)
         self.canvas.draw_line(self.x3, self.y3, self.x1, self.y1)
 
-
+# отрисовка прямоугольника
 class Rectangle:
     def __init__(self, canvas, x1, y1, width, height):
         self.canvas = canvas
@@ -102,7 +104,7 @@ class Rectangle:
         self.y1 = y1
         self.width = width
         self.height = height
-
+    # функция отрисовки прямоугольника
     def draw(self):
         x2 = self.x1 + self.width
         y2 = self.y1
@@ -115,12 +117,13 @@ class Rectangle:
         self.canvas.draw_line(x3, y3, x4, y4)
         self.canvas.draw_line(x4, y4, self.x1, self.y1)
 
-
+# указание ширины и высоты холста
 width = int(input("Enter screen width: "))
 height = int(input("Enter screen height: "))
 
 my_canvas = Engine2D(width, height)
 
+# выбор цвета
 while True:
     colour = input("Want to choose a color? If yes, write its name. Available colors: Red, Blue, Green. If you don't want to select a color, press Enter: ")
     colour = colour.lower()
@@ -146,13 +149,15 @@ while True:
     else:
         print("Invalid color! Please choose from available colors.")
 
-x_point = int(input("Enter the x coordinate of the point: "))
-y_point = int(input("Enter the y coordinate of the point: "))
+# поставить точку
+x_point = int(input("Enter the x coordinate of the dot: "))
+y_point = int(input("Enter the y coordinate of the dot: "))
 
 my_canvas.draw_point(x_point, y_point)
 
 my_canvas.render()
 
+# нарисовать линию
 x1_line = int(input("Enter the x coordinate of the starting line: "))
 y1_line = int(input("Enter the y starting coordinate of the line: "))
 x2_line = int(input("Enter the x coordinate of the line's end coordinate: "))
@@ -162,6 +167,7 @@ my_canvas.draw_line(x1_line, y1_line, x2_line, y2_line)
 
 my_canvas.render()
 
+# нарисовать круг
 x_circle = int(input("Enter the x coordinate of the circle's center: "))
 y_circle = int(input("Enter the y coordinate of the circle's center: "))
 radius_circle = int(input("Enter the radius of the circle: "))
@@ -173,6 +179,7 @@ my_circle.draw()
 
 my_canvas.render()
 
+# нарисовать треугольник
 x1_triangle = int(input("Введите x координату первой точки треугольника: "))
 y1_triangle = int(input("Введите y координату первой точки треугольника: "))
 x2_triangle = int(input("Введите x координату второй точки треугольника: "))
@@ -186,6 +193,7 @@ my_triangle.draw()
 
 my_canvas.render()
 
+# нарисовать прямоугольник
 x1_rectangle = int(input("Введите x координату верхнего левого угла прямоугольника: "))
 y1_rectangle = int(input("Введите y координату верхнего левого угла прямоугольника: "))
 width_rectangle = int(input("Введите ширину прямоугольника: "))
