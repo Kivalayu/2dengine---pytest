@@ -200,9 +200,18 @@ width_rectangle = int(input("Введите ширину прямоугольн�
 height_rectangle = int(input("Введите высоту прямоугольника: "))
 print("Drawing a {} rectangle at ({}, {}) with width {} and height {}".format(colour, x1_rectangle, y1_rectangle, width_rectangle, height_rectangle))
 
-my_rectangle = Rectangle(Fore.RED + my_canvas, x1_rectangle, y1_rectangle, width_rectangle, height_rectangle)
+my_rectangle = Rectangle(my_canvas, x1_rectangle, y1_rectangle, width_rectangle, height_rectangle)
 
 my_rectangle.draw()
+
+my_canvas.render()
+
+# очистка холста после рисования
+print("After 10 seconds canvas will be cleared")
+
+time.sleep(10)
+
+my_canvas.clear_screen()
 
 my_canvas.render()
 
