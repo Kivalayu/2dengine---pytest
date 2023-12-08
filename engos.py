@@ -1,4 +1,5 @@
 from colorama import init, Fore
+import time 
 # команда для работы библиотеки colorama
 init()
 # создание движка
